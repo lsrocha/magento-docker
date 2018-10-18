@@ -14,7 +14,6 @@ ENV WEBROOT=/var/www/html
 ENV PATH="${PATH}:${WEBROOT}/bin:${WEBROOT}/vendor/bin"
 
 EXPOSE 80/tcp
-EXPOSE 9000/tcp
 
 RUN docker-php-ext-configure bcmath
 RUN docker-php-ext-install bcmath
