@@ -1,0 +1,4 @@
+[submodule "magento"]
+    path = magento
+    url = https://github.com/magento/magento2.git
+    branch = 2.2.6

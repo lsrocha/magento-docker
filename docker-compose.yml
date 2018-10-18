@@ -1,0 +1,10 @@
+version: '3'
+services:
+    web:
+        build: .
+        environment:
+            - XDEBUG_CONFIG=remote_connect_back=1
+        ports:
+            - "80:80"
+        volumes:
+            - "./magento:/var/www/html"
