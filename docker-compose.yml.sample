@@ -1,11 +1,21 @@
 version: '3'
 services:
+    db:
+        image: mariadb:10.2
+        environment:
+            - MYSQL_ROOT_PASSWORD=root
+        ports:
+            - "3306:3306"
     web:
         build: .
+        depends_on:
+            - db
         environment:
             - PUID=100
             - PGID=1000
             - XDEBUG_CONFIG=remote_connect_back=1
+        links:
+            - db:db.store.local
         ports:
             - "80:80"
         volumes:
