@@ -6,25 +6,36 @@ Docker container for Magento development based on [richarvey/nginx-php-fpm](http
 - Alpine Linux 3.4.6
 - PHP 7.1.12
 - Nginx 1.13.7
-- Magento 2.2.6
 
 ## Requirements
-- Docker Compose
 - Git
+- Docker Compose
+
 
 ## Installation
 
-```sh
-$ git clone --recursive git@github.com:lsrocha/magento-docker.git
-```
+1. Clone the repository
 
-```sh
-$ docker-compose up -d
-```
+    ```sh
+    $ git clone git@github.com:lsrocha/magento-docker.git
+    $ cd magento-docker
+    ```
 
-The next step is to install and configure your Magento store. Check [Magento documentation](https://devdocs.magento.com/guides/v2.2/install-gde/composer.html#install-magento) for details.
+2. Prepare your Docker Compose file
 
-By default, the server will listen to `store.local` address. You can custom it specifying `DOMAIN` environment variable on `docker-compose.yml` file.
+    This project provides you a sample Docker Compose file. After cloning it, copy `docker-compose.yml.sample` to `docker-compose.yml` and make the necessary changes.
+
+3. Import your code
+
+    Import your Magento project into the resultant directory. Feel free to follow the best way for you, but be sure your project directory is called `magento`. For example, you can run: `git clone [...] magento`, `mv [...] magento` or even `composer create-project [...] magento` (following [Magento installation doc](https://devdocs.magento.com/guides/v2.2/install-gde/composer.html)).
+
+4. Create docker containers
+
+    ```sh
+    $ docker-compose up -d
+    ```
+
+Now your store is available at `http://store.local`.
 
 ## How to
 
@@ -38,12 +49,6 @@ $ docker exec magento-docker_web_1 magento
 
 ```sh
 $ docker logs -f magento-docker_web_1
-```
-
-### Listen to Magento logs
-
-```sh
-$ docker exec -t magento-docker_web_1 bash -c 'tail -f /var/www/html/var/log/*.log'
 ```
 
 ### Debug your application

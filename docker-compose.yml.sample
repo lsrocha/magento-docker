@@ -3,8 +3,12 @@ services:
     web:
         build: .
         environment:
+            - PUID=100
+            - PGID=1000
             - XDEBUG_CONFIG=remote_connect_back=1
         ports:
             - "80:80"
         volumes:
             - "./magento:/var/www/html"
+            - "./magento/nginx.conf.sample:/etc/nginx/magento.conf.sample"
+            - "./config/default.conf:/etc/nginx/sites-available/default.conf"

@@ -1,0 +1,4 @@
+*.swp
+*.swo
+docker-compose.yml
+magento/
