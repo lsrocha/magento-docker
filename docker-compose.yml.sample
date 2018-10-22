@@ -6,6 +6,8 @@ services:
             - MYSQL_ROOT_PASSWORD=root
         ports:
             - "3306:3306"
+        volumes:
+            - "mariadb:/var/lib/mysql"
     web:
         build: .
         depends_on:
@@ -22,3 +24,6 @@ services:
             - "./magento:/var/www/html"
             - "./magento/nginx.conf.sample:/etc/nginx/magento.conf.sample"
             - "./config/default.conf:/etc/nginx/sites-available/default.conf"
+volumes:
+    mariadb:
+        external: true

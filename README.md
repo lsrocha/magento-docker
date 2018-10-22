@@ -22,15 +22,21 @@ Docker container for Magento development based on [richarvey/nginx-php-fpm](http
     $ cd magento-docker
     ```
 
-2. Prepare your Docker Compose file
+2. Create a shared database volume (if it doesn't exist)
+
+    ```sh
+    $ docker volume create mariadb
+    ```
+
+3. Prepare your Docker Compose file
 
     This project provides you a sample Docker Compose file. After cloning it, copy `docker-compose.yml.sample` to `docker-compose.yml` and make the necessary changes.
 
-3. Import your code
+4. Import your code
 
     Import your Magento project into the resultant directory. Feel free to follow the best way for you, but be sure your project directory is called `magento`. For example, you can run: `git clone [...] magento`, `mv [...] magento` or even `composer create-project [...] magento` (following [Magento installation doc](https://devdocs.magento.com/guides/v2.2/install-gde/composer.html)).
 
-4. Create docker containers
+5. Create docker containers
 
     ```sh
     $ docker-compose up -d
