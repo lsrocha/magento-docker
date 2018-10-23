@@ -13,8 +13,8 @@ services:
         depends_on:
             - db
         environment:
-            - PUID=1000
-            - PGID=1000
+            - USER_ID=1000
+            - GROUP_ID=1000
             - XDEBUG_CONFIG=remote_connect_back=1
         links:
             - db:db.store.local
