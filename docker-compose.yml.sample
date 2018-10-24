@@ -13,8 +13,9 @@ services:
         depends_on:
             - db
         environment:
-            - USER_ID=1000
-            - GROUP_ID=1000
+            - DEV_UID=1000
+            - NGINX_UID=127
+            - NGINX_GID=127
             - XDEBUG_CONFIG=remote_connect_back=1
         links:
             - db:db.store.local

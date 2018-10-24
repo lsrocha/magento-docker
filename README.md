@@ -12,7 +12,6 @@ Docker container for Magento development based on [richarvey/nginx-php-fpm](http
 - Git
 - Docker Compose
 
-
 ## Installation
 
 1. Clone the repository
@@ -45,12 +44,6 @@ Docker container for Magento development based on [richarvey/nginx-php-fpm](http
 Now your store is available at `http://store.local`.
 
 ## How to
-
-### Execute Magento commands
-
-```sh
-$ docker exec magento-docker_web_1 magento
-```
 
 ### Listen to Nginx logs
 
