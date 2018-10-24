@@ -1,4 +1,6 @@
 #!/bin/bash
+update-ca-certificates
+
 if [ ! -z "$NGINX_UID" ]; then
     if [ -z "$NGINX_GID" ]; then
         NGINX_GID="$NGINX_UID"

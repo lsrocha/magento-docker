@@ -25,6 +25,7 @@ services:
             - "./magento:/var/www/html"
             - "./magento/nginx.conf.sample:/etc/nginx/magento.conf.sample"
             - "./config/default.conf:/etc/nginx/sites-available/default.conf"
+            - "./config/certificates:/usr/local/share/ca-certificates"
 volumes:
     mariadb:
         external: true

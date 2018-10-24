@@ -2,3 +2,6 @@
 *.swo
 docker-compose.yml
 magento/
+
+config/certificates/*
+!config/certificates/.empty
