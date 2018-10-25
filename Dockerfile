@@ -8,8 +8,24 @@ ENV ENABLE_XDEBUG=1
 ENV ERRORS=1
 ENV PHP_ERRORS_STDERR=1
 
-RUN docker-php-ext-configure bcmath
-RUN docker-php-ext-install bcmath
+COPY config/certificates /usr/local/share/ca-certificates
+RUN update-ca-certificates
+
+RUN apk add --update autoconf g++ libtool make pcre-dev
+
+RUN docker-php-ext-configure bcmath \
+    && docker-php-ext-install bcmath
+
+RUN apk add imagemagick-dev \
+    && pecl install imagick \
+    && docker-php-ext-enable imagick
+
+RUN apk del autoconf g++ libtool make pcre-dev
+
+# Certificates are imported for installation purpose only.
+# In order to keep this image generic, ca-certificates directory
+# should be replaced using volumes.
+RUN rm /usr/local/share/ca-certificates/*
 
 ADD script/dev-start.sh /dev-start.sh
 

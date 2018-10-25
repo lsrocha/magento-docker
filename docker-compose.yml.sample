@@ -8,7 +8,7 @@ services:
             - "3306:3306"
         volumes:
             - "mariadb:/var/lib/mysql"
-            - "./config/mysqld.cnf:/etc/mysql/conf.d/mysqld.cnf:ro"
+            - "./config/mysql:/etc/mysql/conf.d"
     web:
         build: .
         depends_on:
@@ -24,9 +24,7 @@ services:
             - "80:80"
         volumes:
             - "./magento:/var/www/html"
-            - "./magento/nginx.conf.sample:/etc/nginx/magento.conf.sample"
-            - "./config/default.conf:/etc/nginx/sites-available/default.conf"
-            - "./config/certificates:/usr/local/share/ca-certificates"
+            - "./magento/nginx.conf.sample:/etc/nginx/magento.conf"
+            - "./config/nginx/default.conf:/etc/nginx/sites-available/default.conf"
 volumes:
     mariadb:
-        external: true
