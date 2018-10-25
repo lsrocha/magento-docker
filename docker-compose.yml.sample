@@ -17,6 +17,7 @@ services:
         build: .
         depends_on:
             - db
+            - redis
         environment:
             - DEV_UID=1000
             - NGINX_UID=127
