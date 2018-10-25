@@ -24,6 +24,7 @@ services:
             - XDEBUG_CONFIG=remote_connect_back=1
         links:
             - db:db.store.local
+            - redis:redis.store.local
         ports:
             - "80:80"
         volumes:
