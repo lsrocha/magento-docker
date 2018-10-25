@@ -14,7 +14,8 @@ if [ ! -z "$NGINX_UID" ]; then
         XDEBUG_LOG="/tmp/xdebug.log"
 
         adduser -D -S -s /bin/bash -G nginx -u $DEV_UID dev
-        su dev -c "echo \"alias mage='php -d memory_limit=4G -f /var/www/html/bin/magento'\" > /home/dev/.bashrc"
+        su dev -c 'echo alias mage=\"php -d memory_limit=4G -f /var/www/html/bin/magento\" >> /home/dev/.bashrc'
+        su dev -c 'echo alias ssh-start=\"eval \`ssh-agent -s\`\" >> /home/dev/.bashrc'
 
         if [ ! -f $XDEBUG_LOG ]; then
             touch $XDEBUG_LOG
