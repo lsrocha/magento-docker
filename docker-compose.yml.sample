@@ -9,6 +9,10 @@ services:
         volumes:
             - "mariadb:/var/lib/mysql"
             - "./config/mysql:/etc/mysql/conf.d"
+    redis:
+        image: redis:3.2-alpine
+        volumes:
+            - "redis:/data"
     web:
         build: .
         depends_on:
@@ -28,3 +32,4 @@ services:
             - "./config/nginx/default.conf:/etc/nginx/sites-available/default.conf"
 volumes:
     mariadb:
+    redis:

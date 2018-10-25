@@ -7,6 +7,7 @@ Docker container for Magento development based on [richarvey/nginx-php-fpm](http
 - PHP 7.1.12
 - Nginx 1.13.7
 - MariaDB 10.2
+- Redis 3.2
 
 ## Requirements
 - Git
