@@ -30,7 +30,7 @@ services:
             - "80:80"
         volumes:
             - "./magento:/var/www/html"
-            - "./magento/nginx.conf.sample:/etc/nginx/magento.conf"
+            - "./magento/nginx.conf:/etc/nginx/magento.conf"
             - "./config/nginx/default.conf:/etc/nginx/sites-available/default.conf"
 volumes:
     mariadb:

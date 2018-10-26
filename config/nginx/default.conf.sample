@@ -2,11 +2,16 @@ upstream fastcgi_backend {
     server unix:/var/run/php-fpm.sock;
 }
 
+# map $http_host $MAGE_RUN_CODE {
+#     store.local default;
+# }
+
 server {
     listen 80;
     listen [::]:80;
 
     server_name store.local;
     set $MAGE_ROOT /var/www/html;
+    # set $MAGE_RUN_TYPE store;
     include /etc/nginx/magento.conf;
 }
