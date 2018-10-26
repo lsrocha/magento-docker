@@ -63,7 +63,7 @@ $ docker logs -f magento-docker_web_1
 
 Point your client/IDE to port 9000 and enable script debugging on your browser. Extensions for this purpose can be found in [Xdebug documentation](https://xdebug.org/docs/remote).
 
-## Configure multiple stores/websites
+### Configure multiple stores/websites
 
 1. Map your stores in `config/nginx/default.conf`
 
