@@ -22,6 +22,8 @@ RUN apk add imagemagick-dev \
 
 RUN apk del autoconf g++ libtool make pcre-dev
 
+ADD config/php/mail.ini /usr/local/etc/php/conf.d/mail.ini
+
 # Certificates are imported for installation purpose only.
 # In order to keep this image generic, ca-certificates directory
 # should be replaced using volumes.
