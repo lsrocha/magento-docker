@@ -35,6 +35,7 @@ services:
         volumes:
             - "./magento:/var/www/html"
             - "./magento/nginx.conf:/etc/nginx/magento.conf"
+            - "./config/certificates:/usr/local/share/ca-certificates"
             - "./config/nginx/default.conf:/etc/nginx/sites-available/default.conf"
 volumes:
     mariadb:
