@@ -4,9 +4,11 @@ ENV REMOVE_FILES=0
 ENV SKIP_COMPOSER=1
 ENV SKIP_CHOWN=1
 
-ENV ENABLE_XDEBUG=1
 ENV ERRORS=1
 ENV PHP_ERRORS_STDERR=1
+
+ENV ENABLE_XDEBUG=1
+ENV XDEBUG_CONFIG="remote_host=host-container"
 
 COPY config/certificates /usr/local/share/ca-certificates
 RUN update-ca-certificates
