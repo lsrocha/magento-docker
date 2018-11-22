@@ -13,6 +13,9 @@ ENV XDEBUG_CONFIG="remote_host=host-container"
 COPY config/certificates /usr/local/share/ca-certificates
 RUN update-ca-certificates
 
+RUN wget https://files.magerun.net/n98-magerun2.phar -O /usr/local/bin/n98-magerun2 \
+    && chmod +x /usr/local/bin/n98-magerun2
+
 RUN apk add --update autoconf g++ libtool make pcre-dev
 
 RUN docker-php-ext-configure bcmath \
@@ -24,13 +27,12 @@ RUN apk add imagemagick-dev \
 
 RUN apk del autoconf g++ libtool make pcre-dev
 
-ADD config/php/mail.ini /usr/local/etc/php/conf.d/mail.ini
-
 # Certificates are imported for installation purpose only.
 # In order to keep this image generic, ca-certificates directory
 # should be replaced using volumes.
 RUN rm /usr/local/share/ca-certificates/*
 
+ADD config/php/mail.ini /usr/local/etc/php/conf.d/mail.ini
 ADD script/dev-start.sh /dev-start.sh
 
 CMD ["/dev-start.sh"]

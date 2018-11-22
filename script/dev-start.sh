@@ -19,6 +19,7 @@ if [ ! -z "$NGINX_UID" ]; then
 
         # Creating bash aliases
         su dev -c 'echo alias mage=\"php -d memory_limit=4G -f /var/www/html/bin/magento\" >> /home/dev/.bashrc'
+        su dev -c 'echo alias n98-magerun=\"php -d memory_limit=4G -f /usr/local/bin/n98-magerun2\" >> /home/dev/.bashrc'
         su dev -c 'echo alias ssh-start=\"eval \`ssh-agent -s\`\" >> /home/dev/.bashrc'
 
         if [ ! -f $XDEBUG_LOG ]; then
