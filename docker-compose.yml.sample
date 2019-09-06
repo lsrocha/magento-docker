@@ -9,6 +9,12 @@ services:
         volumes:
             - "mariadb:/var/lib/mysql"
             - "./config/mysql:/etc/mysql/conf.d"
+    elastic:
+        image: elasticsearch:2.4-alpine
+        ports:
+            - "9200:9200"
+        volumes:
+            - "elastic:/usr/share/elasticsearch/data"
     redis:
         image: redis:3.2-alpine
         volumes:
@@ -29,6 +35,7 @@ services:
         extra_hosts:
             - "host-container:172.17.0.1"
         links:
+            - elastic:elastic.store.local
             - db:db.store.local
             - redis:redis.store.local
         ports:
@@ -39,5 +46,6 @@ services:
             - "./config/certificates:/usr/local/share/ca-certificates"
             - "./config/nginx/default.conf:/etc/nginx/sites-available/default.conf"
 volumes:
+    elastic:
     mariadb:
     redis:
